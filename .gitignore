@@ -1,0 +1,5 @@
+*~
+/.project
+/solr/
+/.vagrant/
+/params.yml

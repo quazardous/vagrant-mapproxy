@@ -1,0 +1,3 @@
+forwarded_port:
+  host: 8080
+  guest: 8080
