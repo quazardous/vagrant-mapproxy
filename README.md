@@ -1,6 +1,6 @@
 ## Vagrant MapProxy
 
-A simple Centos65-x64 based MapProxy box. The main provision part is in **bash** and it's Puppet enabled.
+A simple Centos65-x64 based MapProxy box. The provision is in **bash** and **Puppet**.
 
 ## MapProxy
 
@@ -41,7 +41,7 @@ From host:
 
 In a host browser:
 
-http://127.0.0.1:8888/demo/
+http://127.0.0.1:8080/demo/
 
 ### Cache
 
