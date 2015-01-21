@@ -10,8 +10,13 @@ class mapproxy {
     path => ["/bin", "/usr/bin"],
     require => Package['proj', 'freetype-devel', 'zlib-devel', 'turbojpeg-devel', 'geos-devel'],
   }
+  exec { "PIL":
+    command => "pip install PIL",
+    path => ["/bin", "/usr/bin"],
+    require => Package['proj', 'freetype-devel', 'zlib-devel', 'turbojpeg-devel', 'geos-devel'],
+  }
   exec { "PyYAML":
-    command => "pip install Pillow",
+    command => "pip install PyYAML",
     path => ["/bin", "/usr/bin"],
   }
   exec { "Cython":
@@ -21,10 +26,11 @@ class mapproxy {
   exec { "Shapely":
     command => "pip install Shapely",
     path => ["/bin", "/usr/bin"],
+    require => Exec['Cython'],
   }
   exec { "MapProxy":
     command => "pip install MapProxy",
     path => ["/bin", "/usr/bin"],
-    require => Exec['Pillow', 'PyYAML', 'Cython', 'Shapely'],
+    require => Exec['Pillow', 'PIL', 'PyYAML', 'Shapely'],
   }
 }

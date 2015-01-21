@@ -8,9 +8,10 @@ class repository {
     unless  => 'rpm -qa | grep epel',
   }
 
-## uncomment to update your box
-#  exec { 'yum-update':
-#    path    => '/bin:/usr/bin',
-#    command => 'yum update -y',
-#  }
+  exec { 'yum-update':
+    path    => ['/bin', '/usr/bin'],
+    command => 'yum update -y',
+    timeout     => 1800,
+    require => Exec['epel.repo'],
+  }
 }

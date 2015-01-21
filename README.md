@@ -17,33 +17,23 @@ Clone GIT and vagrant up:
 
 ## Usage
 
-By default the guest 8888 port is mapped the host 8888 port :
-
-http://localhost:8888/demo/
-
-### Params
+By default the guest 8080 port is mapped the host 8080 port (8080 is the default mapproxy port).
 
 The box creates a default params.yml with various parameters (ports, etc).
 
 You can edit this file to match your needs.
 
+The box provides a default mymapproxy folder and various examples.
+
 From host :
 
-    vagrant ssh -c 'sudo service solr restart'
+    vagrant ssh -c 'cd /vagrant/mymapproxy;mapproxy-util serve-develop --bind 0.0.0.0:8080 osm.yaml'
 
-## Troubleshooting
+NB: 0.0.0.0 binding is important !
 
-### Service statup
+### Cache
 
-For now you need to restart solr service each time you up.
-
-    vagrant ssh -c 'sudo service solr restart'
-
--> http://razius.com/articles/launching-services-after-vagrant-mount/
-
-So after install you have to up you box with:
-
-    vagrant up && vagrant ssh -c 'sudo service solr restart'
+Map Proxy will build a cache in the mymapproxy folder.
 
 ## License
 

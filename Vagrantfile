@@ -4,7 +4,11 @@ require 'yaml'
 require 'fileutils'
 
 unless File.exists?(File.expand_path(File.join(File.dirname(__FILE__), "./params.yml")))
-    FileUtils.copy_file(File.expand_path(File.join(File.dirname(__FILE__), "./dist/params.dist.yml")), File.expand_path(File.join(File.dirname(__FILE__), "./params.yml")));
+    FileUtils.copy_file(File.expand_path(File.join(File.dirname(__FILE__), "./dist/params.dist.yml")), File.expand_path(File.join(File.dirname(__FILE__), "./params.yml")))
+end
+
+unless File.exists?(File.expand_path(File.join(File.dirname(__FILE__), "./mymapproxy")))
+    FileUtils.cp_r(File.expand_path(File.join(File.dirname(__FILE__), "./dist/mymapproxy.dist")), File.expand_path(File.join(File.dirname(__FILE__), "./mymapproxy")))
 end
 
 params = YAML.load_file 'params.yml'
