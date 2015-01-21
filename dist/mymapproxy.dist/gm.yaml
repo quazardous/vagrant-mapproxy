@@ -1,0 +1,32 @@
+# Google Map example
+
+services:
+  demo:
+  tms:
+  wms:
+    md: 
+      title: GM via mapproxy
+
+sources:
+  gm:
+    type: tile
+    url: http://mt0.google.com/vt/lyrs=m@0&hl=fr&x=%(x)s&y=%(y)s&z=%(z)s
+    grid: gm_grid
+
+grids:
+  gm_grid:
+    base: GLOBAL_MERCATOR
+    origin: ul
+
+caches:
+  gm_cache:
+    grids: [gm_grid]
+    sources: [gm]
+    cache:
+      type: file
+      directory_layout: tms
+
+layers:
+  - name: gm_layer
+    title: GM tiles
+    sources: [gm_cache]
